@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title>login page</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link rel="manifest" href="/manifest.jsonon">
+  <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <h1 style="font-weight: 900; font-size: 400%; margin-top: 50px;"> Shelf-Wise </h2>
+    <div
+      style="border: 1px solid black; margin-top: 10px; margin-bottom: 50px; margin-left: 200px; margin-right: 200px;">
+    </div>
+</body>
+
+<body>
+  <div class="page" style="margin: auto ; text-align: center; width: 300px; padding-bottom: 10px;">
+    <h1 style="margin: 20px;"> Login page </h1>
+    <form name="loginForm" id="loginForm" onsubmit="submitLogin(event)">
+      <label for="username">Username:</label><br>
+      <input type="text" id="username" name="username"><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password">
+      <br>
+      <button type="submit" style="margin-top: 10px;" class="btn btn-outline-success">Login</button>
+    </form>
+    <img src="images/shelfwise-bookstack (1).png" alt="bookshelf"
+      style="width: 100px; height: 100px; margin-top: 10px;">
+</body>
+</div>
+<div style="border: 1px solid black; margin-top: 50px; margin-bottom: 100px; margin-left: 200px; margin-right: 200px;">
+</div>
+<div id="loginResponse"></div>
+
+
+
+<script>
+  function submitLogin(event) {
+    event.preventDefault(); // Prevent the form from submitting the default way
+    const uname = document.getElementById('username').value;
+    const pword = document.getElementById('password').value;
+
+
+    // Check if both fields are filled
+    if (username === "" || password === "") {
+      document.getElementById('loginResponse').innerText = "Please provide both username and password!";
+      return;
+    }
+    // Prepare the data to be sent as JSON
+    const data = {
+      username: uname,
+      password: pword
+    };
+
+    // console.log(JSON.stringify(data));
+
+    // Send the data using fetch()
+    fetch('authentication.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          window.location.href = "homepage.php"; // Redirect on success
+        } else {
+          document.getElementById('loginResponse').innerText = result.message;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log('Service Worker registered!', reg))
+        .catch(err => console.log('Service Worker registration failed!', err));
+    });
+  }
+
+
+</script>
+</body>
+
+</html>
