@@ -32,7 +32,7 @@ if (!isset($_SESSION['username'])) {
         <input type="author" id="author" name="author"><br>
         <label for="genre">Genre:</label><br>
         <input type="genre" id="genre" name="genre"><br>
-        <label for="Pdate">Publish date:</label><br>
+        <label for="Pdate">Publish year:</label><br>
         <input type="Pdate" id="Pdate" name="Pdate">
         <br>
         <button type="submit" class="btn btn-outline-success m-3">Add book</button>
