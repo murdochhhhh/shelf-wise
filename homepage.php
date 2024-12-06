@@ -34,7 +34,7 @@ $books = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </svg><?php echo $_SESSION['username']; ?> </h4>
     <a style="text-align:center; margin-top: 10px; margin-left: 20px;" class="btn btn-success" href="aboutme.php">About me</a> 
     </div>
-  <h1 style="font-weight: 900; font-size: 400%; margin-top: 50px; margin-bottom: 30px;"> Shelf-Wise </h2>
+  <h1 style="font-weight: 900; font-size: 400%; margin-top: 10px; margin-bottom: 30px;"> Shelf-Wise </h2>
     <div class="page" style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px; margin-left: 200px; margin-right: 200px;padding-left: 75px; padding-right: 75px; border-radius: 100px;">
     <table class="table border border-success b-3 text-start table-striped">
         <tr class="table table-success">
